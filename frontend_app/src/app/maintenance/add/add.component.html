@@ -1,0 +1,70 @@
+<div class="container">
+  <h1>Create New Maintenance task for property {{ propertyID }}</h1>
+  <a href="#" routerLink="" class="btn btn-primary align-btn">Back</a>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <input
+        formControlName="description"
+        id="description"
+        type="text"
+        class="form-control"
+        rows="3"
+      />
+      <div
+        *ngIf="f['description'].touched && f['description'].invalid"
+        class="alert alert-danger"
+      >
+        <div
+          *ngIf="f['description'].errors && f['description'].errors['required']"
+        >
+          Description is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="status">Status:</label>
+      <input
+        formControlName="status"
+        id="status"
+        type="text"
+        class="form-control"
+      />
+      <div
+        *ngIf="f['status'].touched && f['status'].invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="f['status'].errors && f['status'].errors['required']">
+          Status is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="scheduledDate">Scheduled Date</label>
+      <input
+        formControlName="scheduledDate"
+        id="scheduledDate"
+        type="Date"
+        class="form-control"
+      />
+
+      <div
+        *ngIf="f['scheduledDate'].touched && f['scheduledDate'].invalid"
+        class="alert alert-danger"
+      >
+        <div
+          *ngIf="
+            f['scheduledDate'].errors && f['scheduledDate'].errors['required']
+          "
+        >
+          Scheduled Date Start is required.
+        </div>
+      </div>
+    </div>
+    <div class="p-2">
+    <button class="btn btn-primary" type="submit" [disabled]="!form.valid">
+      Submit
+    </button>
+  </div>
+  </form>
+</div>

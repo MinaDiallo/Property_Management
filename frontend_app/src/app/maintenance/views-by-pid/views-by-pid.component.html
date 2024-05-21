@@ -1,0 +1,43 @@
+<div class="container">
+  <h1>Proprety {{ propertyId }} Maintenances</h1>
+  <a href="#" routerLink="" class="btn btn-primary btn-space">Back</a>
+  <a
+    href="#"
+    routerLink="/properties/maintenace/add/"
+    [queryParams]="{propertyId}"
+    class="btn btn-success btn-space"
+    >Create New Maintenance Task</a
+  >
+  <div class="p-4">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>description</th>
+          <th>status</th>
+          <th>Scheduled Date</th>
+          <th>PropertyID</th>
+          <th width="250px">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of maintenances">
+          <td>{{ task.id }}</td>
+          <td>{{ task.description }}</td>
+          <td>{{ task.status }}</td>
+          <td>{{ task.scheduledDate }}</td>
+          <td>{{ task.propertyID }}</td>
+          <td>
+            <a
+              href="#"
+              [routerLink]="['/properties/maintenance/', task.id, 'update']"
+              [queryParams]="{propertyId}"
+              class="btn btn-primary"
+              >Update</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

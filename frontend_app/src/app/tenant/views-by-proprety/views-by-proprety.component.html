@@ -1,0 +1,54 @@
+<div class="container">
+  <h1>Proprety {{ propertyId }} tenants</h1>
+  <div class="p-4">
+    <a href="#" routerLink="" class="btn btn-primary btn-space">Back</a>
+    <a
+      href="#"
+      routerLink="/properties/tenant/add/"
+      [queryParams]="{propertyId}"
+      class="btn btn-success .btn-space"
+      >Create New Tenant</a
+    >
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Contact Info</th>
+        <th>Lease Term Start</th>
+        <th>Lease Term End</th>
+        <th>Rental Payement Status</th>
+        <th>PropertyID</th>
+        <th width="250px">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tenant of tenants">
+        <td>{{ tenant.id }}</td>
+        <td>{{ tenant.name }}</td>
+        <td>{{ tenant.contactInfo }}</td>
+        <td>{{ tenant.leaseTermStart }}</td>
+        <td>{{ tenant.leaseTermEnd }}</td>
+        <td>{{ tenant.rentalPayementStatus }}</td>
+        <td>{{ tenant.propertyID }}</td>
+        <td>
+          <a
+            href="#"
+            [routerLink]="['/properties/tenant/', tenant.id, 'update']"
+            [queryParams]="{propertyId}"
+            class="btn btn-primary .btn-space"
+            >Update</a
+          >
+          <button
+            type="button"
+            (click)="removeTenant(tenant.id)"
+            class="btn btn-danger .btn-space"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

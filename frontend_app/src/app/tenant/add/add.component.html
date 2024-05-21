@@ -1,0 +1,115 @@
+<div class="container">
+  <h1>Create New Tenant for property {{ propertyID }}</h1>
+  <a href="#" routerLink="" class="btn btn-primary align-btn">Back</a>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input
+        formControlName="name"
+        id="name"
+        type="text"
+        class="form-control"
+      />
+      <div
+        *ngIf="f['name'].touched && f['name'].invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="f['name'].errors && f['name'].errors['required']">
+          Name is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="name">contactInfo:</label>
+      <input
+        formControlName="contactInfo"
+        id="contactInfo"
+        type="text"
+        class="form-control"
+      />
+      <div
+        *ngIf="f['contactInfo'].touched && f['contactInfo'].invalid"
+        class="alert alert-danger"
+      >
+        <div
+          *ngIf="f['contactInfo'].errors && f['contactInfo'].errors['required']"
+        >
+          contactInfo is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="leaseTermStart">Lease Term Start</label>
+      <input
+        formControlName="leaseTermStart"
+        id="leaseTermStart"
+        type="Date"
+        class="form-control"
+      />
+
+      <div
+        *ngIf="f['leaseTermStart'].touched && f['leaseTermStart'].invalid"
+        class="alert alert-danger"
+      >
+        <div
+          *ngIf="
+            f['leaseTermStart'].errors && f['leaseTermStart'].errors['required']
+          "
+        >
+          Lease Term Start is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="leaseTermEnd">Lease Term End</label>
+      <input
+        formControlName="leaseTermEnd"
+        id="leaseTermEnd"
+        type="date"
+        class="form-control"
+      />
+      <div
+        *ngIf="f['leaseTermEnd'].touched && f['leaseTermEnd'].invalid"
+        class="alert alert-danger"
+      >
+        <div
+          *ngIf="
+            f['leaseTermEnd'].errors && f['leaseTermEnd'].errors['required']
+          "
+        >
+          LeaseTerm End is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="rentalPayementStatus">Rental Payement Status</label>
+      <input
+        formControlName="rentalPayementStatus"
+        id="rentalPayementStatus"
+        type="string"
+        class="form-control"
+      />
+
+      <div
+        *ngIf="
+          f['rentalPayementStatus'].touched && f['rentalPayementStatus'].invalid
+        "
+        class="alert alert-danger"
+      >
+        <div
+          *ngIf="
+            f['rentalPayementStatus'].errors &&
+            f['rentalPayementStatus'].errors['required']
+          "
+        >
+          Rental Payement Status is required.
+        </div>
+      </div>
+    </div>
+    <div class="p-2">
+      <button class="btn btn-primary" type="submit" [disabled]="!form.valid">
+        Submit
+      </button>
+    </div>
+  </form>
+</div>

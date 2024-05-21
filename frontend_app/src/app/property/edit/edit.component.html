@@ -1,0 +1,116 @@
+<div class="container">
+  <h1>Update Property</h1>
+
+  <a href="#" routerLink="/properties/index" class="btn btn-primary align-btn"
+    >Back</a
+  >
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="address">Address:</label>
+      <input
+        formControlName="address"
+        id="address"
+        type="text"
+        [(ngModel)]="property.address"
+        class="form-control"
+      />
+      <div
+        *ngIf="f['address'].touched && f['address'].invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="f['address'].errors && f['address'].errors['required']">
+          Address is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="propertyType">Property Type</label>
+      <input
+        formControlName="propertyType"
+        id="propertyType"
+        type="text"
+        [(ngModel)]="property.propertyType"
+        class="form-control"
+      />
+
+      <div
+        *ngIf="f['propertyType'].touched && f['propertyType'].invalid"
+        class="alert alert-danger"
+      >
+        <div
+          *ngIf="
+            f['propertyType'].errors && f['propertyType'].errors['required']
+          "
+        >
+          Property Type is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="status">Status</label>
+      <input
+        formControlName="status"
+        id="status"
+        type="text"
+        [(ngModel)]="property.status"
+        class="form-control"
+      />
+
+      <div
+        *ngIf="f['status'].touched && f['status'].invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="f['status'].errors && f['status'].errors['required']">
+          Status is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="purchaseDate">Purchase Date</label>
+      <input
+        formControlName="purchaseDate"
+        id="purchaseDate"
+        type="date"
+        [(ngModel)]="property.purchaseDate"
+        class="form-control"
+      />
+      <div
+        *ngIf="f['purchaseDate'].touched && f['purchaseDate'].invalid"
+        class="alert alert-danger"
+      >
+        <div
+          *ngIf="
+            f['purchaseDate'].errors && f['purchaseDate'].errors['required']
+          "
+        >
+          PurchaseDate is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input
+        formControlName="price"
+        id="price"
+        type="number"
+        [(ngModel)]="property.price"
+        class="form-control"
+      />
+
+      <div
+        *ngIf="f['price'].touched && f['price'].invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="f['price'].errors && f['price'].errors['required']">
+          Price is required.
+        </div>
+      </div>
+    </div>
+    <div class="p-4">
+      <button class="btn btn-primary" type="submit" [disabled]="!form.valid">
+        Update
+      </button>
+    </div>
+  </form>
+</div>

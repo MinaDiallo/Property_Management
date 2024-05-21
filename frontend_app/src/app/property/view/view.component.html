@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="p-4">
+    <a href="#" routerLink="" class="btn btn-primary btn-space">Back</a>
+    <a
+      href="#"
+      routerLink="/property/tenants/"
+      [queryParams]="property"
+      class="btn btn-primary btn-space"
+      >Tenant</a
+    >
+    <a
+      href="#"
+      routerLink="/property/maintenances/"
+      [queryParams]="property"
+      class="btn btn-primary btn-space"
+      >Maintenance</a
+    >
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <h1>View Property {{ property.id }}</h1>
+    </div>
+    <div class="card-body p-3">
+      <blockquote class="blockquote mb-0">
+        <div>ID : {{ property.id }}</div>
+
+        <div>Address: {{ property.address }}</div>
+        <div>Property Type: {{ property.propertyType }}</div>
+        <div>Status: {{ property.status }}</div>
+        <div>Purchase Date: {{ property.purchaseDate }}</div>
+        <div>Price: {{ property.price }}</div>
+      </blockquote>
+    </div>
+  </div>
+</div>

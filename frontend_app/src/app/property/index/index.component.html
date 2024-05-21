@@ -1,0 +1,55 @@
+<div class="container">
+  <div>
+    <app-navbar />
+
+    <div class="align-btn p-4">
+      <a href="#" routerLink="/properties/create/" class="btn btn-success"
+        >Create New Property</a
+      >
+    </div>
+    <table class="table table-striped align-bottom">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Address</th>
+          <th>Property Type</th>
+          <th>Status</th>
+          <th>Purchase Date</th>
+          <th>Price</th>
+          <th width="250px">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let property of properties">
+          <td>{{ property.id }}</td>
+          <td>{{ property.address }}</td>
+          <td>{{ property.propertyType }}</td>
+          <td>{{ property.status }}</td>
+          <td>{{ property.purchaseDate }}</td>
+          <td>{{ property.price }}</td>
+          <td>
+            <a
+              href="#"
+              [routerLink]="['/properties/', property.id, 'view']"
+              class="btn btn-info btn-space"
+              >View</a
+            >
+            <a
+              href="#"
+              [routerLink]="['/properties/', property.id, 'edit']"
+              class="btn btn-primary btn-space"
+              >Edit</a
+            >
+            <button
+              type="button"
+              (click)="deleteProperty(property.id)"
+              class="btn btn-danger"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
