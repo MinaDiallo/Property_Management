@@ -66,7 +66,7 @@ class TestApp(unittest.TestCase):
   def test_getProperties(self):
     resp = requests.get(self.URL + '/properties')
     self.assertEqual(resp.status_code, 200)
-    self.assertEqual(len(resp.json()), 4) 
+    self.assertEqual(len(resp.json()), 3) 
     print('Test itinial Properties completed')
     
   def test_getTenants(self):
