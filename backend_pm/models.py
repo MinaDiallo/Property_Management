@@ -2,11 +2,10 @@ from core import app
 from sqlalchemy.orm import  relationship
 from flask_sqlalchemy import SQLAlchemy
 from initData import Properties, Holders, Tasks
+
+
 db= SQLAlchemy(app)
-#   def __init__(self, title, description, created_by):
-#         Entity.__init__(self, created_by)
-#         self.title = title
-#         self.description = description TODO
+
 class Property(db.Model):
     __tablename__ = 'property'
 

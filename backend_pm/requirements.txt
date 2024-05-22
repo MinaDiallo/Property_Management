@@ -3,3 +3,4 @@ psycopg2-binary
 Flask-SQLAlchemy
 Flask-cors
 Flask_swagger_ui
+requests

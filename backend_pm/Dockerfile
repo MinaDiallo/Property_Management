@@ -12,4 +12,5 @@ COPY . .
 EXPOSE 4000
 ENV FLASK_APP=core
 CMD [ "flask", "run", "--host=0.0.0.0", "--port=4000"] 
+RUN [ "python", "test_app.py"] 
 

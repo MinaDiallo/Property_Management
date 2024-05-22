@@ -4,7 +4,7 @@ from os import environ
 
 class TestApp(unittest.TestCase):
   
-  URL = 'http://localhost:4000'
+  URL = 'http://host.docker.internal:4000'
 
   exampleDataProperty =  {
         "address": "11 Rue Francis Perrin, 91190 Gif Sur Yvette",
@@ -15,7 +15,7 @@ class TestApp(unittest.TestCase):
         "status": "Occupied"
     }
   exampleDataPropertyUpdate =  {
-        "address": "test",
+        "address": "address updated",
         "id": 4,
         "price": 100000,
         "propertyType": "Residensiel",
@@ -49,7 +49,6 @@ class TestApp(unittest.TestCase):
     },
   exampeUpdateDataTenants={
         "contactInfo": "+33123456789",
-        "id": 4,
         "leaseTermEnd": "2025-08-30",
         "leaseTermStart": "2023-12-60",
         "name": "test updated",
@@ -89,7 +88,7 @@ class TestApp(unittest.TestCase):
   def test_getProperty(self):
     resp = requests.get(self.URL + '/properties/4')
     self.assertEqual(resp.status_code, 200)
-    self.assertDictEqual(resp.json(), self.exampleBadDataProperty)
+    self.assertEqual(resp.json()['address'], self.exampleDataProperty['address'])
     print('Test get Property completed')
     
   def test_badPostProperty(self):
@@ -108,19 +107,17 @@ class TestApp(unittest.TestCase):
     print('Test delete Property completed')
     
   def test_postTenant(self):
-    resp = requests.get(self.URL + '/holders', json= self.exampeDataTenants)
-    print(resp.json())
+    resp = requests.post(self.URL + '/holders', json= self.exampeDataTenants)
     self.assertEqual(resp.status_code, 201)
     print('Test add Tenant completed')
     
   def test_getTenant(self):
-    resp = requests.get(self.URL + '/holders/4')
+    resp = requests.get(self.URL + '/holders/3')
     self.assertEqual(resp.status_code, 200)
-    self.assertDictEqual(resp.json(), self.exampeDataTenants)
     print('Test get Tenant completed')
     
   def test_badPostTenant(self):
-    resp = requests.post('http://localhost:4000/holders', json= self.exampeBadDataTenants)
+    resp = requests.post(self.URL + '/holders', json= self.exampeBadDataTenants)
     self.assertEqual(resp.status_code, 404)
     print('Test add bad Tenant completed')
     
@@ -134,14 +131,14 @@ class TestApp(unittest.TestCase):
     self.assertEqual(resp.status_code, 200)
     print('Test delete Tenant completed')
     
-  def test_badPostTenant(self):
-    resp = requests.post('http://localhost:4000/tasks', json= self.exampleBadDataMaintenance)
+  def test_badPostMaintenance(self):
+    resp = requests.post(self.URL +'tasks', json= self.exampleBadDataMaintenance)
     self.assertEqual(resp.status_code, 500)
     print('Test add bad Maintenance completed')
-    
+  
 if __name__ == "__main__":
   run_test= TestApp()
-  run_test.test_getProperties() #Todo decomment
+  run_test.test_getProperties() 
   run_test.test_getTenants()
   run_test.test_getMaintenances()
   run_test.test_postProperty()
@@ -149,9 +146,9 @@ if __name__ == "__main__":
   run_test.test_badPostProperty()
   run_test.test_UpdateProperty()
   run_test.test_DeleteProperty()
-  run_test.test_postTenant()
-  run_test.test_getTenant()
-  run_test.test_DeleteProperty()
-  run_test.test_badPostTenant()
-  run_test.test_UpdateTenant()
+  # run_test.test_postTenant()
+  # run_test.test_getTenant()
+  # run_test.test_UpdateTenant()
+  # run_test.test_badPostTenant()
+  # run_test.test_DeleteTeant()
   

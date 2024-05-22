@@ -91,6 +91,7 @@ def add_holder():
     new_property = Property.query.filter_by(id=data['propertyID']).first()
     if new_property:
       new_holder = Holder(name= data['name'], contactInfo=data['contactInfo'], leaseTermStart=data['leaseTermStart'], leaseTermEnd=data['leaseTermEnd'], rentalPayementStatus=data['rentalPayementStatus'], property=new_property)
+      print('aaa', new_holder)
       db.session.add(new_holder)
       db.session.commit()
       return make_response(jsonify({'holder': "holder added"}), 201)
@@ -124,7 +125,7 @@ def get_holderByPropertyID(propertyId):
   
 # update a holder
 @app.route('/holders/<int:id>', methods=['PUT'])
-def update_hoder(id):
+def update_holder(id):
   try:
     data = request.get_json()
     holder = Holder.query.filter_by(id=id).first()
