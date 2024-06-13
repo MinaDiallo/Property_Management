@@ -5,13 +5,13 @@ Docker
 
 ## Run
 
-1- Backend 
+* Backend 
 
  docker-compose build
  
  docker-compose up -d
  
-2- Frontend
+* Frontend
  ng serve
  
 ## Outils
