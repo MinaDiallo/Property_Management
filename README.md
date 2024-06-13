@@ -7,12 +7,12 @@ Docker
 
 * Backend 
 
- docker-compose build
- 
- docker-compose up -d
+   docker-compose build
+   
+   docker-compose up -d
  
 * Frontend
- ng serve
+   ng serve
  
 ## Outils
 Flask
