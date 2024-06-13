@@ -12,6 +12,7 @@ Docker
    docker-compose up -d
  
 * Frontend
+  
    ng serve
  
 ## Outils
