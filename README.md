@@ -6,7 +6,9 @@ Docker
 ## Run
 
 1- Backend 
+
  docker-compose build
+ 
  docker-compose up -d
  
 2- Frontend
